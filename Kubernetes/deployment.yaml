@@ -1,1 +1,20 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: urbanwear-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: urbanwear
+  template:
+    metadata:
+      labels:
+        app: urbanwear
+    spec:
+      containers:
+      - name: urbanwear
+        image: urbanwear:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

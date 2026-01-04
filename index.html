@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UrbanWear Clothing Store</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .card h3 {
+      margin: 0.5rem 0;
+    }
+
+    .card button {
+      background: #28a745;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .card button:hover {
+      background: #218838;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>UrbanWear</h1>
+    <p>Trendy clothing for men & women</p>
+  </header>
+
+  <section class="products">
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=T-Shirt" alt="Men T-Shirt">
+      <h3>Men's Cotton T-Shirt</h3>
+      <p>₹599</p>
+      <p>Sizes: S, M, L, XL</p>
+      <button onclick="addToCart('Men\'s Cotton T-Shirt')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Jeans" alt="Women Jeans">
+      <h3>Women's Blue Jeans</h3>
+      <p>₹1,299</p>
+      <p>Sizes: 28, 30, 32, 34</p>
+      <button onclick="addToCart('Women\'s Blue Jeans')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Hoodie" alt="Hoodie">
+      <h3>Unisex Hoodie</h3>
+      <p>₹1,799</p>
+      <p>Sizes: M, L, XL</p>
+      <button onclick="addToCart('Unisex Hoodie')">Add to Cart</button>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 UrbanWear Clothing</p>
+  </footer>
+
+  <script>
+    function addToCart(product) {
+      alert(product + " added to cart!");
+    }
+  </script>
+
+</body>
+</html>
 

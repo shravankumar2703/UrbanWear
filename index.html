@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UrbanWear Clothing Store</title>
-
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,39 +11,33 @@
       padding: 0;
       background: #f4f4f4;
     }
-
     header {
       background: #222;
       color: #fff;
       padding: 1rem;
       text-align: center;
     }
-
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
       padding: 1rem;
     }
-
     .card {
       background: #fff;
       padding: 1rem;
       border-radius: 6px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 4px;
     }
-
     .card h3 {
       margin: 0.5rem 0;
     }
-
     .card button {
       background: #28a745;
       color: #fff;
@@ -53,11 +46,9 @@
       cursor: pointer;
       border-radius: 4px;
     }
-
     .card button:hover {
       background: #218838;
     }
-
     footer {
       text-align: center;
       padding: 1rem;
@@ -66,16 +57,19 @@
     }
   </style>
 </head>
-
 <body>
-
   <header>
     <h1>UrbanWear</h1>
     <p>Trendy clothing for men & women</p>
+    <div id="auth">
+      <span id="user-status">Not signed in</span>
+      <button onclick="showLogin()">Login</button>
+      <button onclick="logout()">Logout</button>
+      <span style="margin-left:15px">🛒 Cart: <span id="cart-count">0</span></span>
+    </div>
   </header>
 
   <section class="products">
-
     <div class="card">
       <img src="https://via.placeholder.com/300x200?text=T-Shirt" alt="Men T-Shirt">
       <h3>Men's Cotton T-Shirt</h3>
@@ -99,7 +93,6 @@
       <p>Sizes: M, L, XL</p>
       <button onclick="addToCart('Unisex Hoodie')">Add to Cart</button>
     </div>
-
   </section>
 
   <footer>
@@ -107,11 +100,43 @@
   </footer>
 
   <script>
-    function addToCart(product) {
-      alert(product + " added to cart!");
-    }
-  </script>
+    // -------- STATE MANAGEMENT (LocalStorage) --------
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let user = localStorage.getItem('user') || null;
 
+    function updateUI() {
+      document.getElementById('cart-count').innerText = cart.length;
+      document.getElementById('user-status').innerText = user ? `Signed in as ${user}` : 'Not signed in';
+    }
+
+    // -------- CART --------
+    function addToCart(product) {
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateUI();
+      alert(product + ' added to cart');
+    }
+
+    // -------- AUTH --------
+    function showLogin() {
+      const username = prompt('Enter username');
+      if (username) {
+        user = username;
+        localStorage.setItem('user', user);
+        updateUI();
+        alert('Logged in successfully');
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('user');
+      user = null;
+      updateUI();
+      alert('Logged out');
+    }
+
+    // -------- INIT --------
+    updateUI();
+  </script>
 </body>
 </html>
-

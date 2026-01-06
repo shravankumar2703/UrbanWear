@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: urbanwear
-        image: urbanwear:1.0
+        image: urbanwear:1.0.1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
